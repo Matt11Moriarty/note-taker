@@ -39,14 +39,28 @@ app.post('/api/notes', (req, res) => {
       data: req.body,
     }
     res.status(201).json(response);
-    } else {
+    } 
+  else {
       res.status(500).json('Error in posting new note.')
     }
 
-    const responseString = JSON.stringify(response.data);
-    console.log(responseString);
+  const responseString = JSON.stringify(response.data);
+  console.log(responseString);
 
-    fs.appendFile(db, responseString, (err) => err ? console.log)
+  if(!fs.existsSync('../../../db/db.json')) {
+    fs.writeFile('../../../db/db.json', '[]', (err) => err ? console.log(err) : console.log('db.json file created'))
+  }
+
+  let dbFile = fs.readFileSync('../../../db/db.json');
+
+  let dbFileObject = JSON.parse(dbFile);
+
+  dbFileObject.push(req.body);
+  dbFile = JSON.stringify(dbFileObject);
+
+  fs.writeFileSync('../../../db/db.json', dbFile);
+
+  //fs.appendFile('../../../db/db.json', responseString, (err) => err ? console.log(err) : console.log('Notes added to JSON file'))
 })
 
 
