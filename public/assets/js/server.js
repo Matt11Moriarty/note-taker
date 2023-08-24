@@ -38,10 +38,15 @@ app.post('/api/notes', (req, res) => {
       status: 'success',
       data: req.body,
     }
-  }
-  console.log(`Request: ${req}`)
-  console.log(`Response: ${response}`)
-  
+    res.status(201).json(response);
+    } else {
+      res.status(500).json('Error in posting new note.')
+    }
+
+    const responseString = JSON.stringify(response.data);
+    console.log(responseString);
+
+    fs.appendFile(db, responseString, (err) => err ? console.log)
 })
 
 
