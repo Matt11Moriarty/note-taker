@@ -4,7 +4,7 @@ const PORT = 3001;
 const fs = require('fs');
 
 const app = express();
-const db = require('../../../db/db.json')
+const db = require('./db/db.json')
 
 app.use(express.static('public'));
 
@@ -14,7 +14,7 @@ app.use(express.urlencoded({ extended: true }));
 
 //path definitions
 app.get('/notes', (req, res) => {
-    res.sendFile(path.join(`${__dirname}/../..`, 'notes.html'))
+    res.sendFile(path.join(`${__dirname}`, 'notes.html'))
 })
 
 app.get('/api/notes', (req, res) => {
@@ -23,7 +23,7 @@ app.get('/api/notes', (req, res) => {
 })
 
 app.get('*', (req, res) => {
-    res.sendFile(path.join(`${__dirname}/../..`, 'index.html'));
+    res.sendFile(path.join(`${__dirname}`, 'index.html'));
   });
 
 
@@ -47,18 +47,18 @@ app.post('/api/notes', (req, res) => {
   const responseString = JSON.stringify(response.data);
   console.log(responseString);
 
-  if(!fs.existsSync('../../../db/db.json')) {
-    fs.writeFile('../../../db/db.json', '[]', (err) => err ? console.log(err) : console.log('db.json file created'))
+  if(!fs.existsSync('./db/db.json')) {
+    fs.writeFile('./db/db.json', '[]', (err) => err ? console.log(err) : console.log('db.json file created'))
   }
 
-  let dbFile = fs.readFileSync('../../../db/db.json');
+  let dbFile = fs.readFileSync('./db/db.json');
 
   let dbFileObject = JSON.parse(dbFile);
 
   dbFileObject.push(req.body);
   dbFile = JSON.stringify(dbFileObject);
 
-  fs.writeFileSync('../../../db/db.json', dbFile);
+  fs.writeFileSync('./db/db.json', dbFile);
 
   //fs.appendFile('../../../db/db.json', responseString, (err) => err ? console.log(err) : console.log('Notes added to JSON file'))
 })
