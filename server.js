@@ -1,13 +1,15 @@
 const express = require('express');
-const path = require('path');
-const PORT = 3001;
 const fs = require('fs');
 
 const app = express();
-const db = require('./db/db.json')
+const db = require('./db/db.json');
+const path = require('path');
+const { v4: uuidv4 } = require('uuid');
+// const { uuid } = require('./middleware/uuid');
 
 app.use(express.static('public'));
 
+const PORT = 3001;
 // Middleware for parsing application/json and urlencoded data
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -31,12 +33,16 @@ app.post('/api/notes', (req, res) => {
   console.info(`${req.method} request received to add a review`);
 
   let response;
-  const { title, text } = req.body;
+  req.body.id = uuidv4()
+
+  const { title , text , id } = req.body
 
   if(req.body && req.body.title) {
     response = {
       status: 'success',
-      data: req.body,
+      title,
+      text,
+      id
     }
     res.status(201).json(response);
     } 
