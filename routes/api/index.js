@@ -8,7 +8,6 @@ api.use(express.json());
 api.use(express.urlencoded({ extended: true }));
 
 
-
 api.get('/notes', (req, res) => {
     console.info(`${req.method} request received to get reviews`);
   
