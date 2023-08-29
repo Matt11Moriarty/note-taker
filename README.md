@@ -23,7 +23,7 @@ N/A
 
 ## Usage
 
-Visit the Deployed App URL: https://desolate-refuge-33248-f58cca3ed4a7.herokuapp.com/
+Visit the Deployed App URL: [https://desolate-refuge-33248-f58cca3ed4a7.herokuapp.com/](https://desolate-refuge-33248-f58cca3ed4a7.herokuapp.com/)
 
 1. Notes can be added manually using the UI
 2. You can navigate between notes using the list on the left side of the screen
