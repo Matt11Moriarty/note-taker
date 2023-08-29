@@ -1,13 +1,12 @@
-# note-taker
+# Note Taker App
 
 ## Description
 
-Provide a short description explaining the what, why, and how of your project. Use the following questions as a guide:
+This application was created as a way for users to add notes for themselves, and keep track of their to-do list. 
+In this day and age, it's hard to keep track of all of your thoughts and tasks, so why not go paperless and use an app to track them?
 
-- What was your motivation?
-- Why did you build this project? (Note: the answer is not "Because it was a homework assignment.")
-- What problem does it solve?
-- What did you learn?
+In building this project I learned the ins and outs of building an application with Express, and deploying it with Heroku. 
+I am now proficient in building both front and back end applications, and developing modularized paths linking the two.
 
 ## Table of Contents (Optional)
 
@@ -20,13 +19,20 @@ If your README is long, add a table of contents to make it easy for users to fin
 
 ## Installation
 
-What are the steps required to install your project? Provide a step-by-step description of how to get the development environment running.
+N/A
 
 ## Usage
 
-1. 
+Visit the Deployed App URL: https://desolate-refuge-33248-f58cca3ed4a7.herokuapp.com/
 
-GIF GOES HERE
+1. Notes can be added manually using the UI
+2. You can navigate between notes using the list on the left side of the screen
+3. Notes can be deleted manually using the trash can button 
+4. New notes can be added by sending a POST to the `/api/notes` endpoint 
+5. All notes can be displayed by sending a GET to the `/api/notes` endpoint
+6. A single note can be deleted by sending a DEL to the `/api/notes/:id` endpoint
+
+![alt text](./assets/images/note-taker.gif)
 
 ## Credits
 
